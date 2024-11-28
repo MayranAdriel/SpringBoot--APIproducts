@@ -9,20 +9,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
+@RequestMapping(("/products"))
 public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
 
-    @PostMapping("/products")
+    @PostMapping
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto){
         ProductModel productModel = new ProductModel();
         BeanUtils.copyProperties(productRecordDto, productModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(productModel));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProductModel>> getAllProducts(){
+        return ResponseEntity.status(HttpStatus.OK).body(productRepository.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getById(@PathVariable(value = "id") UUID id){""
+        Optional<ProductModel> optionalProductModel = productRepository.findById(id);
+
+        if (optionalProductModel.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not Found");
+
+        return ResponseEntity.status(HttpStatus.FOUND).body(optionalProductModel.get());
     }
 }
