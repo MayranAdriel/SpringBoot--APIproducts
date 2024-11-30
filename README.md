@@ -1,21 +1,25 @@
 # API de Gerenciamento de Produtos com HATEOAS
 
-Esta é uma API RESTful desenvolvida em **Java 17** utilizando **Spring Boot**, implementando um CRUD completo para a gestão de produtos. A API segue o **Modelo de Maturidade de Richardson**, atingindo o nível 3 com a implementação de **HATEOAS** para navegabilidade.
+Esta é uma API RESTful desenvolvida em **Java 17** utilizando **Spring Boot**, implementando um CRUD completo para a
+gestão de produtos. A API segue o **Modelo de Maturidade de Richardson**, atingindo o nível 3 com a implementação de *
+*HATEOAS** para navegabilidade.
 
 ## Tecnologias Utilizadas
 
 - **Java 17** (Amazon Corretto 17.0.11)
 - **Spring Boot**
-  - **Spring Web**: para a construção de endpoints RESTful.
-  - **Spring Validation**: para validação de dados de entrada.
-  - **Spring HATEOAS**: para adição de links de navegabilidade nos recursos.
+    - **Spring Web**: para a construção de endpoints RESTful.
+    - **Spring Validation**: para validação de dados de entrada.
+    - **Spring HATEOAS**: para adição de links de navegabilidade nos recursos.
 - **PostgreSQL**: banco de dados relacional utilizado para persistência dos dados.
 - **Swagger**: para documentação interativa da API.
 
 ## Funcionalidades
 
-- **Buscar Produto por ID**: recupera os detalhes de um produto passando seu ID na URL. Inclui um link para a listagem de todos os produtos.
-- **Listar Todos os Produtos**: retorna todos os produtos cadastrados, onde cada produto possui um link para acessar seus detalhes.
+- **Buscar Produto por ID**: recupera os detalhes de um produto passando seu ID na URL. Inclui um link para a listagem
+  de todos os produtos.
+- **Listar Todos os Produtos**: retorna todos os produtos cadastrados, onde cada produto possui um link para acessar
+  seus detalhes.
 - **Criar Novo Produto**: adiciona um novo produto ao sistema.
 - **Deletar Produto por ID**: remove um produto especificado pelo seu ID.
 
@@ -48,7 +52,8 @@ Esta é uma API RESTful desenvolvida em **Java 17** utilizando **Spring Boot**, 
 #### 2. Listar Todos os Produtos
 
 - **GET** `http://localhost:8080/products`
-- **Descrição**: Retorna uma lista de todos os produtos cadastrados, com cada produto contendo um link para acessar seus detalhes.
+- **Descrição**: Retorna uma lista de todos os produtos cadastrados, com cada produto contendo um link para acessar seus
+  detalhes.
 - **Exemplo de Resposta (200 - OK)**:
 
 ```json
